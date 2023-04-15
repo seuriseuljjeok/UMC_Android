@@ -16,7 +16,6 @@ class Check : AppCompatActivity() {
 
         //Memo activity에서 intent로 넘겨준 값을 intent를 통해 받아옴
         //문자열로 넣어주었기 때문에 getStringExtra(키 값)를 통해 꺼내옴
-        var intent = intent
         var value = intent.getStringExtra("memo")
         binding.getText.text = value //Check activity에 꺼내온 값 세팅
     }

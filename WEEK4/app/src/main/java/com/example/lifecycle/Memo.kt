@@ -55,7 +55,7 @@ class Memo : AppCompatActivity() {
 
             //intent에 editText 값 담아줌
             //putExtra(key, value) => 값을 담을 때 사용함
-           // intent.putExtra("memo", value)
+            intent.putExtra("memo", result)
             startActivity(intent)
         }
     }
@@ -72,7 +72,7 @@ class Memo : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        if(!savedMemo.isEmpty()) { //저장된 메모가 있는 경우
+        if(savedMemo.isNotEmpty()) { //저장된 메모가 있는 경우
             result = savedMemo //저장된 메모를 최종메모 변수에 저장
             binding.editText.setText(result) //최종변수를 EditText에 넣어줌
             binding.btn.isEnabled = true //버튼 활성화
