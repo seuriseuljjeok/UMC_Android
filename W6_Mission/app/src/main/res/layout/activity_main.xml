@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/my_intro_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </androidx.viewpager2.widget.ViewPager2>
+
+    <me.relex.circleindicator.CircleIndicator3
+        android:id="@+id/circle_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        app:ci_width="5dp"
+        app:ci_height="5dp"
+        app:ci_margin="5dp"
+        app:ci_drawable_unselected="@drawable/black_radius_foreground"
+        app:ci_animator="@animator/scale_with_alpha"
+        app:ci_orientation="horizontal"
+        app:ci_gravity="center"
+        app:ci_drawable="@drawable/black_radius_foreground"
+        />
+
+    <ImageView
+        android:id="@+id/next_btn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/arrow_forward"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"/>
+    <ImageView
+        android:id="@+id/previous_btn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/arrow_back"
+        android:layout_marginTop="5dp"/>
+
+</RelativeLayout>
