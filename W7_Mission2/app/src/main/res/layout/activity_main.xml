@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E6DFF3"
+
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <ImageView
+        android:id="@+id/albumCover"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/hype_boy"/>
+    <TextView
+        android:id="@+id/songTitle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:text="NewJeans - Hype Boy"/>
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:progressDrawable="@drawable/seekbar"
+        android:thumb="@drawable/seekbarthumb"/>
+    <TextView
+        android:id="@+id/timeView"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginRight="15dp"
+        android:text="00 : 00"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:gravity="right"/>
+
+    <LinearLayout
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#BCCDBBE1"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" >
+
+
+        <Button
+            android:id="@+id/playbtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/playbtn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/pausebtn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/view" />
+
+        <Button
+            android:id="@+id/pausebtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/pausebtn"
+            app:layout_constraintEnd_toStartOf="@+id/stopbtn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/playbtn"
+            tools:layout_editor_absoluteY="672dp" />
+
+        <Button
+            android:id="@+id/stopbtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+
+            android:background="@drawable/stopbtn"
+            app:layout_constraintEnd_toStartOf="@+id/view"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/pausebtn"
+            tools:layout_editor_absoluteY="672dp" />
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
