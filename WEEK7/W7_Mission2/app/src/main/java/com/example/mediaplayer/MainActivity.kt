@@ -49,6 +49,8 @@ class MainActivity : AppCompatActivity() {
         seekBar.max = mediaPlayer.duration
         // 현재 재생중인 위치를 가져와 시크바에 적용
         seekBar.progress = mediaPlayer.currentPosition
+        //timeView에 재생 시간 설정
+        timeView.text = formatTime(mediaPlayer.currentPosition)
 
 
         //MediaPlayer의 객체를 통해 start(),pause() 또는 stop() 메소드를 이용하여 음악을 재생/정지한다.
@@ -60,9 +62,11 @@ class MainActivity : AppCompatActivity() {
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 // 사용자가 SeekBar를 움직이면 재생위치를 바꿔준다(움직인 곳)
-                if (fromUser) mediaPlayer.seekTo(progress)
-                //재생 위치 바꿔주고 play()
-                play()
+                if (fromUser) {
+                    mediaPlayer.seekTo(progress)
+                    if (progress == mediaPlayer.duration) reset() //노래가 끝나면 리셋
+                }else play() //재생 위치 바꿔주고 play()
+
             }
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
@@ -72,7 +76,7 @@ class MainActivity : AppCompatActivity() {
     private fun formatTime(progress: Int): String {
         val min = progress / 60000  //두 자리수 분으로 바꿔주기
         val sec = progress % 60000 / 1000   //두 자리수 초로 바꿔주기
-        return String.format("%02d:%02d", min, sec)
+        return String.format("%02d : %02d", min, sec)
     }
 
     private val handler = object : Handler() {
@@ -85,7 +89,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun play(){
         mediaPlayer.start()
-        time = mediaPlayer.currentPosition //재생 위치 가져와서 재생 시간으로 설정
+        time = mediaPlayer.currentPosition//재생 위치 가져와서 재생 시간으로 설정
         thread(start = true) {
             while (mediaPlayer.isPlaying) { // 음악이 실행 중일 때 계속 돌아가게 함
                 Thread.sleep(1000)  // 1초마다 반복하도록
