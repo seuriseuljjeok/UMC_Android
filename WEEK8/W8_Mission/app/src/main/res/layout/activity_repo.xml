@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="360dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/white"
+    tools:context=".RepoActivity">
+
+    <TextView
+        android:id="@+id/repoTitle"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:text="Star"
+        android:textColor="@color/black"
+        android:textSize="50dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView2"
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        android:background="#E6E2EF"
+        android:gravity="center"
+        android:textColor="#1F1C53"
+        android:textFontWeight="20"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/returnBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/repoTitle"
+        app:layout_constraintVertical_bias="0.0"  />
+
+    <Button
+        android:id="@+id/returnBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="top"
+        android:text="MoveToMain"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:hint="메모를 남겨보세요"
+        android:textAlignment="center"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="587dp"></Button>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

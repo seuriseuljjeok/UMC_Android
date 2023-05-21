@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!--즐겨찾기 시 버튼 이미지-->
+    <item
+        android:drawable="@drawable/like"
+        android:state_checked="true"
+        />
+<!--기본 버튼 이미지-->
+    <item android:drawable="@drawable/unlike"/>
+</selector>
