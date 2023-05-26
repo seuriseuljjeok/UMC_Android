@@ -37,7 +37,8 @@ class MainActivity : AppCompatActivity() {
 
     //activity_memo_saved 관련
     lateinit var savedMemo: TextView
-    lateinit var toggleButton: ToggleButton
+    lateinit var heartBtn: ToggleButton
+    lateinit var starBtn: ToggleButton
     lateinit var time: TextView
 
     //즐겨찾기 관련
@@ -59,7 +60,8 @@ class MainActivity : AppCompatActivity() {
         likedBtn = binding.likedBtn
 
         savedMemo = binding2.memo
-        toggleButton = binding2.like
+        heartBtn = binding2.like
+        starBtn = binding2.bookmark
         time = binding2.time
 
         //Room DB 생성
@@ -100,7 +102,7 @@ class MainActivity : AppCompatActivity() {
                 val dateTime = System.currentTimeMillis().toString()
 
                 //데이터 삽입
-                memo = Memo(result, toggleButton.isPressed, dateTime) //Memo 객체 생성
+                memo = Memo(result, heartBtn.isPressed, dateTime) //Memo 객체 생성
                 memoDao.insertMemo(memo)
                 val memoList: MutableList<Memo> = memoDao.getAll()
 
@@ -112,22 +114,39 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        toggleButton.setOnCheckedChangeListener {
-                savedMemo,
+        heartBtn.setOnCheckedChangeListener {
+                _,
                 isChecked ->
-            //데이터 수정
-            val dateTime = System.currentTimeMillis().toString()
-            memo = Memo(savedMemo.text.toString(), toggleButton.isChecked, dateTime) //Memo 객체 생성
-            memoDao.updateMemo(memo)
+            if(isChecked){
+                //데이터 수정
+                val dateTime = System.currentTimeMillis().toString()
+                memo = Memo(savedMemo.text.toString(), true, dateTime) //Memo 객체 생성
+                memoDao.updateMemo(memo)
 
-            //데이터 저장
-            //데이터를 저장할 때는 입력될 값의 타입에 맞는 Editor의 메소드를 사용해서 저장.
-            //마지막에 apply() 메소드를 호출해야만 실제 파일에 반영됨
-            sharedPreferences = getSharedPreferences(shared, 0)
-            editor = sharedPreferences.edit() //에디터 객체 생성
-            var value = toggleButton.isChecked //즐겨찾기 버튼이 눌렸는지
-            editor.putBoolean("key", value) //키와 값을 저장.
-            editor.apply()
+                //데이터 저장
+                //데이터를 저장할 때는 입력될 값의 타입에 맞는 Editor의 메소드를 사용해서 저장.
+                //마지막에 apply() 메소드를 호출해야만 실제 파일에 반영됨
+                sharedPreferences = getSharedPreferences(shared, 0)
+                editor = sharedPreferences.edit() //에디터 객체 생성
+                var value = heartBtn.isChecked //즐겨찾기 버튼이 눌렸는지
+                editor.putBoolean("key", value) //키와 값을 저장.
+                editor.apply()
+            }else{
+                //데이터 수정
+                val dateTime = System.currentTimeMillis().toString()
+                memo = Memo(savedMemo.text.toString(), false, dateTime) //Memo 객체 생성
+                memoDao.updateMemo(memo)
+
+                //데이터 저장
+                //데이터를 저장할 때는 입력될 값의 타입에 맞는 Editor의 메소드를 사용해서 저장.
+                //마지막에 apply() 메소드를 호출해야만 실제 파일에 반영됨
+                sharedPreferences = getSharedPreferences(shared, 0)
+                editor = sharedPreferences.edit() //에디터 객체 생성
+                var value = heartBtn.isChecked //즐겨찾기 버튼이 눌렸는지
+                editor.putBoolean("key", value) //키와 값을 저장.
+                editor.apply()
+            }
+
         }
 
         likedBtn.setOnClickListener {
@@ -136,7 +155,7 @@ class MainActivity : AppCompatActivity() {
             //만약 해당 키에 데이터가 없으면 defaultValue를 지정해서 해당 값을 기본으로 반환 함.
             sharedPreferences = getSharedPreferences(shared, 0)
             var value = sharedPreferences.getBoolean("key", false)
-            toggleButton.isChecked = value //즐겨찾기 버튼 상태 저장
+            heartBtn.isChecked = value //즐겨찾기 버튼 상태 저장
 
             //페이지 이동
             //Intent 객체 생성 -> Intent(현재 어플리케이션 정보, 이동하고자 하는 클래스)
