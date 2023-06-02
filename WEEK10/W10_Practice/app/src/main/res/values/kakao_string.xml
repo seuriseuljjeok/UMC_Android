@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--SDK를 초기화하기 위해서는 네이티브 앱 키가 필요-->
+    <string name="kakao_native_app_key">6cc4ade3929c04e6602237ac1810ad72</string>
+    <!-- kakao${kakao_native_app_key} 의 구조다. -->
+    <string name="kakao_redirection_scheme">kakao6cc4ade3929c04e6602237ac1810ad72</string>
+
+</resources>

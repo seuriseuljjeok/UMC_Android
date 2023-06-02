@@ -1,0 +1,18 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        //카카오가 제공하는 SDK를 다운로드하기 위함
+        maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
+    }
+}
+rootProject.name = "SocialLogin"
+include ':app'
